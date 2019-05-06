@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="DQr-xh-Egd">
+    <device id="retina6_1" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="gi2-si-nfT">
+            <objects>
+                <viewController id="DQr-xh-Egd" customClass="MainViewController" customModule="Students" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="KnG-5m-VEz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="3Xe-Ne-td8">
+                                <rect key="frame" x="0.0" y="64" width="414" height="798"/>
+                                <subviews>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Xxu-aX-46x">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="29"/>
+                                        <segments>
+                                            <segment title="Name"/>
+                                            <segment title="Last Name"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="sort:" destination="DQr-xh-Egd" eventType="valueChanged" id="NZA-Ca-yu1"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <containerView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="znG-Xy-bJR">
+                                        <rect key="frame" x="0.0" y="36" width="414" height="762"/>
+                                        <connections>
+                                            <segue destination="O7c-j7-e9M" kind="embed" identifier="EmbedStudentsTableView" id="LHN-Os-Hyo"/>
+                                        </connections>
+                                    </containerView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="znG-Xy-bJR" secondAttribute="bottom" id="0Mv-bb-gI9"/>
+                                    <constraint firstItem="znG-Xy-bJR" firstAttribute="leading" secondItem="3Xe-Ne-td8" secondAttribute="leading" id="5t4-gs-UWj"/>
+                                    <constraint firstAttribute="trailing" secondItem="znG-Xy-bJR" secondAttribute="trailing" id="B7V-ZY-l8v"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3Xe-Ne-td8" firstAttribute="leading" secondItem="mjj-Jl-Q1k" secondAttribute="leading" id="Wlj-wB-aiL"/>
+                            <constraint firstItem="mjj-Jl-Q1k" firstAttribute="bottom" secondItem="3Xe-Ne-td8" secondAttribute="bottom" id="eI9-5A-Dzb"/>
+                            <constraint firstItem="3Xe-Ne-td8" firstAttribute="top" secondItem="mjj-Jl-Q1k" secondAttribute="top" constant="20" id="gMt-Rp-cML"/>
+                            <constraint firstItem="mjj-Jl-Q1k" firstAttribute="trailing" secondItem="3Xe-Ne-td8" secondAttribute="trailing" id="uCE-AZ-6fm"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="mjj-Jl-Q1k"/>
+                    </view>
+                    <connections>
+                        <outlet property="sortSelector" destination="Xxu-aX-46x" id="3jD-MD-LSm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UVm-QG-Zur" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-916" y="-158"/>
+        </scene>
+        <!--Students Table View Controller-->
+        <scene sceneID="5Iv-YK-aGi">
+            <objects>
+                <tableViewController id="O7c-j7-e9M" customClass="StudentsTableViewController" customModule="Students" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="dil-HU-I36">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="762"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="StudentCell" textLabel="jSe-Cf-Rna" style="IBUITableViewCellStyleDefault" id="Zja-tp-YKa">
+                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zja-tp-YKa" id="zZe-XN-oig">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jSe-Cf-Rna">
+                                            <rect key="frame" x="20" y="0.0" width="374" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="O7c-j7-e9M" id="l7D-de-pYL"/>
+                            <outlet property="delegate" destination="O7c-j7-e9M" id="jmO-cw-TF5"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TeQ-Ap-Xf2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-174" y="-158"/>
+        </scene>
+    </scenes>
+</document>
